@@ -9,6 +9,10 @@
   --text-color-secundary: #d9d9d9;
   --background: #030304;
   --test-color: #843;
+  --notification: #00bc4f;
+  --notification-lighter: #5aee97;
+  --line: #474747;
+  --card-color: #202025;
 }
 
 body {
@@ -35,6 +39,7 @@ nav {
   justify-content: center;
   padding: 1rem;
   background: var(--background);
+  font-size: 0.75rem;
 }
 
 ul {
@@ -45,6 +50,10 @@ ul {
 
 li {
   list-style: none;
+}
+
+li:hover {
+  border-bottom: 1px solid var(--notification);
 }
 
 a {
@@ -64,6 +73,7 @@ header {
 header h1 {
   font-size: 2.375rem;
   background: #00CE2C;
+  line-height: 1.875rem;
   background: linear-gradient(to right, #00CE2C 16%, #AEDF23 56%, #A3DC00 86%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -85,4 +95,68 @@ header .hero {
 
 header figure {
   display: none;
+}
+
+/*CONTAINER*/
+.update {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+}
+
+.notification {
+  top: 0;
+  left: 0;
+  width: 0.6875rem;
+  height: 0.6875rem;
+  background: var(--notification);
+  border-radius: 50%;
+  animation: notification 2s infinite;
+}
+
+@keyframes notification {
+  0% {
+    box-sizing: 0 0 0.3125rem 0.125rem var(--notification);
+  }
+
+  70% {
+    box-shadow: 0 0 0.1875rem 0.5625rem var(--notification-lighter);
+  }
+
+  100% {
+    box-shadow: 0 0 0.3125rem 0.125rem var(--notification);
+  }
+}
+
+.update p {
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+section .stocks {
+  margin: 1.875rem 0;
+}
+
+.cards {
+  background: var(--card-color);
+  border-radius: 0.1875rem;
+  border: 1px solid var(--line);
+  padding: 0.625rem 0.75rem;
+  width: 100%;
+}
+
+.cards img {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.cards .card-title {
+  font-size: 0.75rem;
+  color: var(--text-color-secundary);
+}
+
+.cards .card-value {
+  font-size: 0.75rem;
+  color: var(--text-color-secundary);
 }
