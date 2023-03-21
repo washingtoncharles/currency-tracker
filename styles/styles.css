@@ -193,3 +193,15 @@ footer {
   font-weight: 400;
   font-size: 1rem;
 }
+
+@media (min-width: 768px) {
+  .quotes-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .quotes-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
