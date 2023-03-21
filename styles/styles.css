@@ -195,13 +195,59 @@ footer {
 }
 
 @media (min-width: 768px) {
+  .update p {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
   .quotes-content {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards {
+    height: 4.375rem;
+  }
+
+  section h3 {
+    font-size: 1.125rem;
+  }
+
+  .cards .card-title {
+    font-size: 16px;
+    color: var(--text-color-secundary);
+  }
+  
+  .cards .card-value {
+    font-size: 16px;
+    color: var(--text-color-secundary);
   }
 }
 
 @media (min-width: 1400px) {
+  .update p {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
   .quotes-content {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards {
+    height: 4.375rem;
+  }
+
+  section h3 {
+    font-size: 1.125rem;
+  }
+
+  .cards .card-title {
+    font-size: 16px;
+    color: var(--text-color-secundary);
+  }
+  
+  .cards .card-value {
+    font-size: 16px;
+    color: var(--text-color-secundary);
   }
 }
