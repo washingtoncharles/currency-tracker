@@ -10,7 +10,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - CSS
 - JavaScript
 
-## 🚧 Projeto - Em construção:
+## 🚧 Projeto:
 
 Dashboard para acompanhar a cotação do dólar e outras moedas internacionais e virtuais.
 
