@@ -1,21 +1,62 @@
-const cardTitle = document.querySelectorAll('.card-title');
-const cardValue = document.querySelectorAll('.card-value');
+const cardValuesQuotes = document.querySelectorAll('.quotes .cards .card-value');
+const cardValuesStocks = document.querySelectorAll('.stocks .cards .card-value');
 
-const production = 'https://api.hgbrasil.com/finance?key=19747001'
-const local = 'https://cors-everywhere.onrender.com/https://api.hgbrasil.com/finance?key=19747001'
+function fetchData() {
+  fetch('https://cors-everywhere.onrender.com/https://api.hgbrasil.com/finance?key=c60e30cf')
+    .then(response => response.json())
+    .then(data => {
+      const results = data.results;
+      const stocks = results.stocks;
+      const currencies = results.currencies;
 
-fetch(`${production}`)
-  .then(response => response.json())
-  .then(data => {
-    const results = data.results;
-    console.log(results)
-    const currencies = results.currencies;
-    const stocks = results.stocks;
-    const bitcoin = results.bitcoin;
+      Object.entries(stocks).forEach(([key, value]) => {
+        cardValuesStocks.forEach(element => {
+          const id = element.dataset.id;
+          if (id === key) {
+            element.textContent = `${value.variation.toFixed(2)}%`;
+            if (value.variation < 0) {
+              element.classList.add("negative");
+            } else {
+              element.classList.remove("negative");
+            }
+          }
+        });
+      });
 
-    cardTitle[0].innerHTML = stocks.IBOVESPA.name;
-    cardValue[0].innerHTML = stocks.IBOVESPA.variation + '%';
+      Object.entries(currencies).forEach(([key, value], index) => {
+        if (index > 0) {
+          cardValuesQuotes.forEach(element => {
+            const id = element.dataset.id;
+            if (id === key) {
+              element.textContent = value.buy.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              });
+            }
+          });
+        }
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
 
-    cardTitle[1].innerHTML = stocks.IFIX.name;
-    cardValue[1].innerHTML = stocks.IFIX.variation + '%';
-  })
+function displayDate() {
+  const dateHourElem = document.getElementById('date-hour');
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString('pt-BR', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric'
+  });
+  const formattedTime = now.toLocaleTimeString('pt-BR', {
+    hour: 'numeric',
+    minute: 'numeric'
+  });
+  dateHourElem.textContent = `Atualizado em: ${formattedDate} às ${formattedTime}`;
+}
+
+fetchData();
+setInterval(fetchData, 3600000);
+setInterval(displayDate, 1000);
